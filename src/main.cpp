@@ -4,6 +4,8 @@
 #include <sstream>
 #include <vector>
 #include "Solution1.h"
+#include "Solution2.h"
+#include <time.h>
 using namespace std;  
   
 int main() {
@@ -65,9 +67,23 @@ int main() {
 	    		assignment.push_back(temp);
 	    	}
 	    	// 方法类
-			printf("------%s------fac:%d------cus:%d---\n", fileName.c_str(), facilityNum, customerNum);
-			Solution1 s1 = Solution1(facilityNum, customerNum, capacity, cost, demand, assignment);
+			printf("------Solution1------%s------fac:%d------cus:%d---\n", fileName.c_str(), facilityNum, customerNum);
+			Solution1 s1 = Solution1(facilityNum, customerNum, capacity, cost, demand, assignment);	
+			clock_t start,stop;
+    		start = clock();
 	    	double result = s1.getResult();
+	    	s1.showResult();
+	    	stop = clock();
+			double dur = (double)stop-start;
+			printf("[Time]---%.0lfms\n", dur);
+	    	printf("[Result]---%lf\n", result);
+	    	printf("------Solution2------%s------fac:%d------cus:%d---\n", fileName.c_str(), facilityNum, customerNum);
+	    	Solution2 s2 = Solution2(facilityNum, customerNum, capacity, cost, demand, assignment);
+	    	start = clock();
+	    	result = s2.getResult();
+	    	stop = clock();
+	    	dur = (double)stop-start;
+			printf("[Time]---%.0lfms\n", dur);
 	    	printf("[Result]---%lf\n", result);
 	    }
 	    // 没有该文件

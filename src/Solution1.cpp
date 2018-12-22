@@ -2,7 +2,6 @@
 #include <iostream>
 #include <cstring>
 #include <limits.h>
-#include <time.h>
 using namespace std;
 
 Solution1::Solution1(int facilityNum, int customerNum, vector<double> capacity, vector<double> cost,
@@ -13,17 +12,30 @@ Solution1::Solution1(int facilityNum, int customerNum, vector<double> capacity, 
 	this -> cost = cost;
 	this -> demand = demand;
 	this -> assignment = assignment;
-	
+	this -> open_status = new int[facilityNum];
+	this -> assignment_list = new int[customerNum];
+	this -> remain_capacity = new double[facilityNum];
+	for(int i = 0; i < facilityNum; i++) {
+		open_status[i] = 0;
+		remain_capacity[i] = capacity[i];
+	}
+	for(int i = 0; i < customerNum; i++)
+		assignment_list[i] = 0;
+}
+
+Solution1::~Solution1() {
+	delete open_status;
+	delete assignment_list;
+	delete remain_capacity;
 }
 
 double Solution1::getResult() {
-	clock_t start,stop;
-    start = clock();
-	int open_status[facilityNum] = {0};
-	int assignment_list[customerNum] = {0};
-	double remain_capacity[facilityNum];
-	for(int i = 0; i < capacity.size(); i++)
-		remain_capacity[i] = capacity[i];
+
+	//int open_status[facilityNum] = {0};
+	//int assignment_list[customerNum] = {0};
+	//double remain_capacity[facilityNum];
+	//for(int i = 0; i < capacity.size(); i++)
+	//	remain_capacity[i] = capacity[i];
 	
 	// 按照贪心算法预估的cost值，选取最小的cost去安排设备
 	for(int count = 0; count < customerNum; count++) {
@@ -54,19 +66,22 @@ double Solution1::getResult() {
 		else {
 			// 进行分配
 			open_status[fac-1] = 1;
-			remain_capacity[fac-1] -= demand[cus];
+			remain_capacity[fac-1] -= demand[cus-1];
 			assignment_list[cus-1] = fac;
 		}
 	}
 	// 计算总共费用
-	int totalCost = 0;
+	double totalCost = 0;
 	// 设备启动费用
 	for(int j = 0; j < facilityNum; j++) {
 		//printf("%d ", open_status[j]);
 		if(open_status[j] == 1) {
 			totalCost += cost[j];
 		}
+		//cout << remain_capacity[j] << " ";
 	}
+	//cout << endl;
+
 	//printf("\n");
 	// customer 费用
 	for(int i = 0; i < customerNum; i++) {
@@ -74,9 +89,7 @@ double Solution1::getResult() {
 		totalCost += assignment[assignment_list[i]-1][i];
 	}
 	//printf("\n");
-	stop = clock();
-	double dur = (double)stop-start;
-	printf("[Time]---%.0lfms\n", dur);
+	
 	return totalCost;
 }
 
@@ -88,4 +101,28 @@ double Solution1::getCost(int facilityNum, int customerNum) {
 	double assignmentCost = assignment[facilityNum][customerNum];
 	// 返回总评估费用
 	return facilityCost + assignmentCost;
+}
+
+
+int* Solution1::get_assignment_list() {
+	return assignment_list;
+}
+
+void Solution1::showResult() {
+	for(int j = 0; j < facilityNum; j++) {
+		if(remain_capacity[j] != capacity[j]) {
+			printf("1 ");
+		}
+		else printf("0 ");
+	}
+	printf("\n");
+	/*for(int j = 0; j < facilityNum; j++) {
+		printf("%0.lf ", remain_capacity[j]);
+	}
+	printf("\n");*/
+	// customer 费用
+	for(int i = 0; i < customerNum; i++) {
+		printf("%d ", assignment_list[i]);
+	}
+	printf("\n");
 }
