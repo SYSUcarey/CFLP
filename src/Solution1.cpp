@@ -30,13 +30,6 @@ Solution1::~Solution1() {
 }
 
 double Solution1::getResult() {
-
-	//int open_status[facilityNum] = {0};
-	//int assignment_list[customerNum] = {0};
-	//double remain_capacity[facilityNum];
-	//for(int i = 0; i < capacity.size(); i++)
-	//	remain_capacity[i] = capacity[i];
-	
 	// 按照贪心算法预估的cost值，选取最小的cost去安排设备
 	for(int count = 0; count < customerNum; count++) {
 		// 获取最高性价比，评估cost最小的分配
@@ -51,7 +44,6 @@ double Solution1::getResult() {
 				if(demand[i] > remain_capacity[j]) continue;
 				// 有容量，获取贪心算法评估代价Cost
 				double cost_j_i = getCost(j, i);
-				//cout << j+1 << " " << i+1 << " " << cost_j_i << endl; 
 				if(cost_j_i < leastCost) {
 					leastCost = cost_j_i;
 					fac = j+1;
@@ -74,21 +66,14 @@ double Solution1::getResult() {
 	double totalCost = 0;
 	// 设备启动费用
 	for(int j = 0; j < facilityNum; j++) {
-		//printf("%d ", open_status[j]);
 		if(open_status[j] == 1) {
 			totalCost += cost[j];
 		}
-		//cout << remain_capacity[j] << " ";
 	}
-	//cout << endl;
-
-	//printf("\n");
 	// customer 费用
 	for(int i = 0; i < customerNum; i++) {
-		//printf("%d ", assignment_list[i]);
 		totalCost += assignment[assignment_list[i]-1][i];
 	}
-	//printf("\n");
 	
 	return totalCost;
 }
@@ -113,14 +98,9 @@ void Solution1::showResult() {
 		if(remain_capacity[j] != capacity[j]) {
 			printf("1 ");
 		}
-		else printf("0 ");
+		else printf("0 ")	;
 	}
 	printf("\n");
-	/*for(int j = 0; j < facilityNum; j++) {
-		printf("%0.lf ", remain_capacity[j]);
-	}
-	printf("\n");*/
-	// customer 费用
 	for(int i = 0; i < customerNum; i++) {
 		printf("%d ", assignment_list[i]);
 	}

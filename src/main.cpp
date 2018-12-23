@@ -66,15 +66,17 @@ int main() {
 	    			temp.push_back(sample[j*customerNum+i+begin]);
 	    		assignment.push_back(temp);
 	    	}
+	    	clock_t start,stop;
+	    	double result, dur;
 	    	// 方法类
 			printf("------Solution1------%s------fac:%d------cus:%d---\n", fileName.c_str(), facilityNum, customerNum);
 			Solution1 s1 = Solution1(facilityNum, customerNum, capacity, cost, demand, assignment);	
-			clock_t start,stop;
+			
     		start = clock();
-	    	double result = s1.getResult();
-	    	s1.showResult();
+	    	result = s1.getResult();
 	    	stop = clock();
-			double dur = (double)stop-start;
+			dur = (double)stop-start;
+	    	s1.showResult();
 			printf("[Time]---%.0lfms\n", dur);
 	    	printf("[Result]---%lf\n", result);
 	    	printf("------Solution2------%s------fac:%d------cus:%d---\n", fileName.c_str(), facilityNum, customerNum);
