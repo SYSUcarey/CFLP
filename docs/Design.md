@@ -57,9 +57,13 @@ Created by [gh-md-toc](https://github.com/ekalinin/github-markdown-toc.go)
 ### 二、问题描述
 
 Suppose there are n facilities and m customers. We wish to choose:
+
 (1) which of the n facilities to open
+
 (2) the assignment of customers to facilities
+
 (3)The objective is to minimize the sum of the opening cost and the assignment cost.
+
 (4)The total demand assigned to a facility must not exceed its capacity.
 
 ---
