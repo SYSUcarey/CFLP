@@ -19,34 +19,34 @@ tags : [ "算法" ]
 
 ------
 
-**[目录]** 
-
+Table of Contents
+=================
 
 * [中山大学算法设计大作业实验报告](#%E4%B8%AD%E5%B1%B1%E5%A4%A7%E5%AD%A6%E7%AE%97%E6%B3%95%E8%AE%BE%E8%AE%A1%E5%A4%A7%E4%BD%9C%E4%B8%9A%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A)
     * [（2018年秋季学期）](#2018%E5%B9%B4%E7%A7%8B%E5%AD%A3%E5%AD%A6%E6%9C%9F)
-    * [实验题目](#%E5%AE%9E%E9%AA%8C%E9%A2%98%E7%9B%AE)
-    * [问题描述](#%E9%97%AE%E9%A2%98%E6%8F%8F%E8%BF%B0)
-    * [问题解析](#%E9%97%AE%E9%A2%98%E8%A7%A3%E6%9E%90)
-    * [项目结构](#%E9%A1%B9%E7%9B%AE%E7%BB%93%E6%9E%84)
-    * [贪心算法](#%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95)
+    * [一、实验题目](#%E4%B8%80%E5%AE%9E%E9%AA%8C%E9%A2%98%E7%9B%AE)
+    * [二、问题描述](#%E4%BA%8C%E9%97%AE%E9%A2%98%E6%8F%8F%E8%BF%B0)
+    * [三、问题解析](#%E4%B8%89%E9%97%AE%E9%A2%98%E8%A7%A3%E6%9E%90)
+    * [四、项目结构](#%E5%9B%9B%E9%A1%B9%E7%9B%AE%E7%BB%93%E6%9E%84)
+    * [五、贪心算法](#%E4%BA%94%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95)
       * [1\.算法思路](#1%E7%AE%97%E6%B3%95%E6%80%9D%E8%B7%AF)
       * [2\.代码实现](#2%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0)
       * [3\.求解结果](#3%E6%B1%82%E8%A7%A3%E7%BB%93%E6%9E%9C)
-            * [<strong>3\.1 程序运行结果</strong>](#31-%E7%A8%8B%E5%BA%8F%E8%BF%90%E8%A1%8C%E7%BB%93%E6%9E%9C)
-            * [<strong>3\.2 结果表</strong>](#32-%E7%BB%93%E6%9E%9C%E8%A1%A8)
-    * [模拟退火算法(SA)](#%E6%A8%A1%E6%8B%9F%E9%80%80%E7%81%AB%E7%AE%97%E6%B3%95sa)
+        * [3\.1 程序运行结果](#31-%E7%A8%8B%E5%BA%8F%E8%BF%90%E8%A1%8C%E7%BB%93%E6%9E%9C)
+        * [3\.2 结果表](#32-%E7%BB%93%E6%9E%9C%E8%A1%A8)
+    * [六、模拟退火算法(SA)](#%E5%85%AD%E6%A8%A1%E6%8B%9F%E9%80%80%E7%81%AB%E7%AE%97%E6%B3%95sa)
       * [1\.算法思路](#1%E7%AE%97%E6%B3%95%E6%80%9D%E8%B7%AF-1)
       * [2\.代码实现](#2%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0-1)
       * [3\.求解结果](#3%E6%B1%82%E8%A7%A3%E7%BB%93%E6%9E%9C-1)
-            * [3\.1 程序运行结果](#31-%E7%A8%8B%E5%BA%8F%E8%BF%90%E8%A1%8C%E7%BB%93%E6%9E%9C-1)
-            * [3\.2结果表](#32%E7%BB%93%E6%9E%9C%E8%A1%A8)
-    * [两种算法对比](#%E4%B8%A4%E7%A7%8D%E7%AE%97%E6%B3%95%E5%AF%B9%E6%AF%94)
+        * [3\.1 程序运行结果](#31-%E7%A8%8B%E5%BA%8F%E8%BF%90%E8%A1%8C%E7%BB%93%E6%9E%9C-1)
+        * [3\.2结果表](#32%E7%BB%93%E6%9E%9C%E8%A1%A8)
+    * [七、两种算法对比](#%E4%B8%83%E4%B8%A4%E7%A7%8D%E7%AE%97%E6%B3%95%E5%AF%B9%E6%AF%94)
 
-Created by [gh-md-toc](https://github.com/ekalinin/github-markdown-toc.go)
+Created by [gh-md-toc](https://github.com/ekalinin/github-markdown-toc.go) 
 
 ***
 
-### 实验题目
+### 一、实验题目
 
 **Capacitated Facility Location Problem Solution** 
 
@@ -54,7 +54,7 @@ Created by [gh-md-toc](https://github.com/ekalinin/github-markdown-toc.go)
 
 ------
 
-### 问题描述
+### 二、问题描述
 
 Suppose there are n facilities and m customers. We wish to choose:
 (1) which of the n facilities to open
@@ -64,7 +64,7 @@ Suppose there are n facilities and m customers. We wish to choose:
 
 ---
 
-### 问题解析
+### 三、问题解析
 
 这是一道容量设备问题，对各个输入案例:
 
@@ -78,7 +78,7 @@ Suppose there are n facilities and m customers. We wish to choose:
 
 ***
 
-### 项目结构
+### 四、项目结构
 
 ```bash
 CFLP/
@@ -101,9 +101,13 @@ CFLP/
     └── Design.md # 设计文档
 ```
 
+**项目地址：** 
+
+[我的项目仓库](https://github.com/SYSUcarey/CFLP) 
+
 ---
 
-### 贪心算法
+### 五、贪心算法
 
 #### 1.算法思路
 
@@ -244,7 +248,7 @@ void Solution1::showResult() {
 
 #### 3.求解结果
 
-##### **3.1 程序运行结果**
+##### 3.1 程序运行结果
 
 (省去 `Solution2` 的终端输出结果) 
 
@@ -616,7 +620,7 @@ F:\github.com\SYSUcarey\CFLP\src>
 
 
 
-##### **3.2 结果表**  
+##### 3.2 结果表  
 
 | 贪心算法 | cost  | time(ms) |
 | :------: | :---: | -------- |
@@ -694,7 +698,7 @@ F:\github.com\SYSUcarey\CFLP\src>
 
 ------
 
-### 模拟退火算法(SA)
+### 六、模拟退火算法(SA)
 
 #### 1.算法思路
 
@@ -1333,7 +1337,7 @@ F:\github.com\SYSUcarey\CFLP\src>
 
 
 
-### 两种算法对比
+### 七、两种算法对比
 
 
 
